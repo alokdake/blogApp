@@ -1,0 +1,32 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-icon
+      routerLink="/home"
+      size="large"
+      slot="start"
+      name="chevron-back-outline"
+    ></ion-icon>
+    <ion-searchbar
+      [(ngModel)]="filter"
+      placeholder="Search Blog"
+      animated="true"
+      [debounce]="1000"
+      clear-icon="trash-bin"
+    >
+    </ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card
+    *ngFor="let item of dataBlog | filter:filter"
+    style="border-radius: 20px"
+  >
+    <img src="{{item.blogImage}}" />
+    <ion-card-header>
+      <ion-card-title>{{item.title}}</ion-card-title>
+      <ion-card-title>{{item.blogAuth}}</ion-card-title>
+      <ion-card-title><b>{{item.category}}</b></ion-card-title>
+    </ion-card-header>
+  </ion-card>
+</ion-content>

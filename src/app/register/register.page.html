@@ -1,0 +1,89 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title><b>Sign Up</b></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card style="border-radius: 10px">
+    <ion-card-header style="background-color: #22b8cf">
+      <ion-card-title><b>Sign up</b></ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p style="font-size: large; text-align: center">
+        <b>~Profile Pic~</b>
+      </p>
+      <ion-icon
+        *ngIf="!finalPicture"
+        style="
+          margin-left: 158px;
+          height: 30px;
+          width: 30px;
+          text-align: center;
+        "
+        (click)="choosePhoto()"
+        name="person-circle-outline"
+        >Profile Pic</ion-icon
+      >
+      <div *ngIf="finalPicture" style="margin-top: 28px">
+        <img
+          style="
+            height: 80px;
+            width: 80px;
+            border-radius: 50%;
+            border: 2px solid rgb(0, 0, 0);
+            margin-left: 140px;
+          "
+          [src]="finalPicture"
+        />
+        <ion-icon
+          style="float: right"
+          (click)="delete()"
+          name="close-circle-outline"
+        ></ion-icon>
+      </div>
+
+      <ion-item>
+        <ion-icon name="person-outline"></ion-icon>
+        <ion-label postion="relative" style="margin-left: 10px">
+          Name</ion-label
+        >
+        <ion-input [(ngModel)]="name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="mail-outline"></ion-icon>
+        <ion-label style="margin-left: 10px"> Email</ion-label>
+        <ion-input
+          [ngClass]="{
+            'is-invalid':
+              RegisterForm.get('email')?.touched &&
+              RegisterForm.get('email')?.invalid
+          }"
+          [(ngModel)]="email"
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="lock-closed-outline"></ion-icon>
+        <ion-label style="margin-left: 10px">Password</ion-label>
+        <ion-input [(ngModel)]="password"> </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="lock-closed-outline"></ion-icon>
+        <ion-label style="margin-left: 10px"> Confirm Password</ion-label>
+        <ion-input [(ngModel)]="cnfpass"> </ion-input>
+      </ion-item>
+
+      <ion-button
+        style="width: 100%; --background: #22b8cf; --color: white"
+        (click)="submit()"
+      >
+        Sign Up
+      </ion-button>
+      <p style="margin-left: 70px" class="message">
+        Already Have account?
+        <a style="color: #22b8cf" href="/login">Sign In</a>
+      </p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

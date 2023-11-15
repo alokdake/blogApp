@@ -1,0 +1,140 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-icon
+      routerLink="/home"
+      size="large"
+      slot="start"
+      name="chevron-back-outline"
+    ></ion-icon>
+    <ion-title><b>Blog</b> </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content> </ion-refresher-content>
+  </ion-refresher>
+
+  <img
+    *ngIf="!finalPicture"
+    style="
+      margin-top: 20px;
+      border-radius: 20px;
+      padding-left: 10px;
+      padding-right: 10px;
+    "
+    src="../assets/img/noimg.jpg"
+    (click)="choosePhoto()"
+  />
+
+  <div *ngIf="finalPicture">
+    <img
+      style="
+        margin-top: 20px;
+        border-radius: 20px;
+        padding-left: 10px;
+        padding-right: 10px;
+        max-width: 100%;
+      "
+      [src]="finalPicture"
+    />
+    <ion-icon
+      style="float: right"
+      (click)="delete()"
+      name="close-circle-outline"
+    ></ion-icon>
+  </div>
+
+  <br />
+
+  <ion-textarea
+    [(ngModel)]="title"
+    style="margin-top: 20px; padding-left: 15px; padding-right: 15px"
+    [counter]="true"
+    maxlength="80"
+    label="Enter Blog Title"
+    labelPlacement="floating"
+    fill="outline"
+    placeholder="Enter Blog Title"
+  ></ion-textarea>
+
+  <ion-textarea
+    [(ngModel)]="description"
+    style="height: 160px; padding-left: 15px; padding-right: 15px"
+    label="Blog Descreption"
+    labelPlacement="floating"
+    fill="outline"
+    placeholder="Blog Descreption"
+  ></ion-textarea>
+  <br />
+  <ion-list>
+    <ion-item style="margin-top: -7px">
+      <ion-select
+        [(ngModel)]="selectedCategory"
+        (ionChange)="triggerEvent()"
+        fill="outline"
+        interface="popover"
+        placeholder="Select Blog Category"
+      >
+        <ion-select-option
+          *ngFor="let item of categories"
+          [value]="item.categoryName"
+          >{{item.categoryName}}</ion-select-option
+        >
+        <!-- <ion-select-option value="Lifestyle">Lifestyle</ion-select-option>
+        <ion-select-option value="Travel">Travel</ion-select-option>
+        <ion-select-option value="Eduction">Eduction</ion-select-option>
+        <ion-select-option value="Fitness">Fitness</ion-select-option>
+        <ion-select-option value="Adventure">Adventure</ion-select-option>
+        <ion-select-option value="Management">Management</ion-select-option>
+        <ion-select-option value="Gaming">Gaming</ion-select-option>
+        <ion-select-option value="Economics">Economics</ion-select-option>
+        <ion-select-option value="Food">Food</ion-select-option>
+        <ion-select-option value="Photography">Photography</ion-select-option>
+        <ion-select-option value="Movies">Movies</ion-select-option>
+        <ion-select-option value="DIY craft">DIY craft</ion-select-option>
+        <ion-select-option value="Buisness">Buisness</ion-select-option>
+        <ion-select-option value="Personal">Personal</ion-select-option>
+        <ion-select-option value="Multimedia">Multimedia</ion-select-option> -->
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <ion-textarea
+    [(ngModel)]="authName"
+    style="margin-top: 10px; padding-left: 15px; padding-right: 15px"
+    [counter]="true"
+    label="Enter Author Name"
+    labelPlacement="floating"
+    fill="outline"
+    placeholder="Enter Blog Author Name"
+  ></ion-textarea>
+  <ion-textarea
+    [(ngModel)]="authMail"
+    style="margin-top: 20px; padding-left: 15px; padding-right: 15px"
+    [counter]="true"
+    label="Enter Email"
+    labelPlacement="floating"
+    fill="outline"
+    placeholder="Enter Author Email"
+  ></ion-textarea>
+  <br />
+
+  <div style="padding-left: 25px">
+    <ion-datetime [(ngModel)]="date"></ion-datetime>
+  </div>
+</ion-content>
+<br />
+<footer>
+  <ion-button
+    style="
+      width: 100%;
+      --background: #22b8cf;
+      --color: white;
+      padding-left: 15px;
+      padding-right: 15px;
+    "
+    (click)="addBlog()"
+    >Add Blog</ion-button
+  >
+</footer>

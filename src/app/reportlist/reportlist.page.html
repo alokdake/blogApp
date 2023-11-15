@@ -1,0 +1,87 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-icon
+      routerLink="/viewblog"
+      size="large"
+      slot="start"
+      name="chevron-back-outline"
+    ></ion-icon>
+    <ion-title><b>Report answer</b></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card style="border-radius: 10px">
+    <ion-card-header style="background-color: #22b8cf">
+      <ion-card-title>
+        <b>Report Reason Details</b>
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-icon name="person"></ion-icon>
+        <ion-label style="margin-left: 10px"> Name</ion-label>
+        <ion-input [(ngModel)]="name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="mail"></ion-icon>
+        <ion-label style="margin-left: 10px"> Email</ion-label>
+        <ion-input [(ngModel)]="email"></ion-input>
+      </ion-item>
+
+      <ion-list>
+        <ion-radio-group [(ngModel)]="reportReason">
+          <ion-item>
+            <ion-label> Scam or fraud </ion-label>
+            <ion-radio value="Scam or fraud" slot="end"> </ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label> False Information </ion-label>
+            <ion-radio value=" False Information" slot="end"> </ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label> Hate speech or symbols </ion-label>
+            <ion-radio value=" Hate speech or symbols" slot="end"> </ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label> Sexulual Exploitation </ion-label>
+            <ion-radio value="Sexulual Exploitation" slot="end"> </ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label> Spam </ion-label>
+            <ion-radio value="Spam" slot="end"> </ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label> Harassment and bullying </ion-label>
+            <ion-radio value="Harassment and bullying" slot="end"> </ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label> Poorly written </ion-label>
+            <ion-radio value="Poorly written" slot="end"> </ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-list>
+      <div>
+        <div>
+          <ion-button
+            style="--background: #22b8cf; --color: white; margin-left: 45px"
+            (click)="submit()"
+            >Report</ion-button
+          >
+        </div>
+        <div>
+          <ion-button
+            style="
+              --background: #22b8cf;
+              --color: white;
+              margin-top: -66px;
+              margin-left: 215px;
+            "
+            (click)="cancel()"
+            >Cancel</ion-button
+          >
+        </div>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

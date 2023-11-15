@@ -1,0 +1,36 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>welcome</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <img
+    (click)="skip()"
+    style="height: 855px; width: 500px"
+    src="../assets/img/final.jpg"
+  />
+
+  <!-- <ion-button style="margin-top: -67px; margin-left: 380px"></ion-button> -->
+
+  <!-- <ion-button fill="outline">
+    Skip
+    <ion-icon
+      style="margin-top: -67px; margin-left: 380px"
+      slot="end"
+      name="play-skip-forward"
+    ></ion-icon>
+  </ion-button> -->
+
+  <!-- <swiper-container
+    (slidechange)="swiperSlideChanged($event)"
+    [loop]="true"
+    [pagination]="true"
+    [autoplay]="true"
+  >
+    <swiper-slide>
+      <img style="height: 855px; width: 500px" src="../assets/img/l5.png" />
+      <ion-button style="margin-top: -67px; margin-left: 380px"></ion-button>
+    </swiper-slide>
+  </swiper-container> -->
+</ion-content>

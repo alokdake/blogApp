@@ -1,0 +1,30 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-icon
+      routerLink="/home"
+      size="large"
+      slot="start"
+      name="chevron-back-outline"
+    ></ion-icon>
+    <ion-title><b>About Us</b></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <swiper-container
+    (slidechange)="swiperSlideChanged($event)"
+    [loop]="true"
+    [pagination]="true"
+    [autoplay]="true"
+  >
+    <swiper-slide>
+      <img style="height: 855px; width: 500px" src="../assets/img/1.png" />
+    </swiper-slide>
+    <swiper-slide>
+      <img style="height: 855px; width: 500px" src="../assets/img/2.png" />
+    </swiper-slide>
+    <swiper-slide>
+      <img style="height: 855px; width: 500px" src="../assets/img/3.png" />
+    </swiper-slide>
+  </swiper-container>
+</ion-content>

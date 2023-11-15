@@ -1,0 +1,43 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title><b>Sign In</b></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card style="border-radius: 10px">
+    <ion-card-header style="background-color: #22b8cf">
+      <ion-card-title>
+        <b>Sign In</b>
+      </ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+
+
+      <form>
+        <ion-item lines="full">
+          <ion-icon name="mail-outline"></ion-icon>
+          <ion-label style="margin-left: 10px">Email</ion-label>
+          <ion-input [(ngModel)]="email"></ion-input>
+        </ion-item>
+        <ion-item lines="full">
+          <ion-icon name="lock-closed-outline"></ion-icon>
+          <ion-label style="margin-left: 10px">Password</ion-label>
+          <ion-input [(ngModel)]="password"></ion-input>
+        </ion-item>
+        <div>
+          <ion-button
+            style="width: 100%; --background: #22b8cf; --color: white"
+            (click)="submit()"
+            >Sign In</ion-button
+          >
+        </div>
+        <p style="margin-left: 70px" class="message">
+          Not registered?
+          <a style="color: #22b8cf" href="/register">Create an account</a>
+        </p>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,43 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-icon
+      (click)="back()"
+      size="large"
+      slot="start"
+      name="chevron-back-outline"
+    ></ion-icon>
+    <ion-title><b>View Blog</b></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="ion-page">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>App</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">
+      <ion-card *ngIf="blog" style="border-radius: 20px">
+        <img src="{{blog.blogImage}}" />
+        <ion-card-header>
+          <ion-card-title style="font-size: xx-large"
+            ><b>{{blog.title}}</b></ion-card-title
+          >
+          <ion-card-title><b>{{blog.category}}</b></ion-card-title>
+          <ion-card-title>{{blog.description}}</ion-card-title>
+          <ion-card-title><b>{{blog.blogAuth}}</b></ion-card-title>
+          <ion-card-title><b>{{blog.blogAuthMail}}</b></ion-card-title>
+          <ion-card-title><b>{{blog.date}}</b></ion-card-title>
+        </ion-card-header>
+
+        <ion-icon
+          style="margin-left: 300px"
+          size="large"
+          (click)="actionSheet()"
+          name="ellipsis-horizontal-outline"
+        ></ion-icon>
+      </ion-card>
+    </ion-content>
+  </div>
+</ion-content>

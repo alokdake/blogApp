@@ -1,20 +1,179 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+<ion-menu [type]="typeOfMenu" contentId="main-content">
+  <ion-header>
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-item>
+        <ion-icon name="grid-sharp"></ion-icon>
+        <ion-title style="padding-left: 10px">Menu</ion-title></ion-item
+      >
     </ion-toolbar>
   </ion-header>
+  <ion-content class="ion-padding">
+    <!-- <ion-item>
+      <ion-icon
+        (click)="admin()"
+        slot="end"
+        size="large"
+        name="chevron-forward"
+      ></ion-icon>
+    </ion-item> -->
+    <!-- <br />
+    <br /> -->
+
+    <!-- <ion-item>
+      <ion-icon size="large" name="log-out"></ion-icon>
+      <ion-label style="padding-left: 10px" (click)="logout()"
+        >Sign Out</ion-label
+      >
+    </ion-item> -->
+
+    <ion-item>
+      <ion-icon size="large" name="log-in"></ion-icon>
+      <ion-label style="padding-left: 10px" (click)="login()"
+        >Admin Sign In</ion-label
+      >
+    </ion-item>
+    <!-- <ion-item>
+        <ion-icon size="large" name="person"></ion-icon>
+        <ion-label style="padding-left: 10px" (click)="register()"
+          >Sign Up</ion-label
+        >
+      </ion-item> -->
+
+    <ion-item>
+      <ion-icon name="home"></ion-icon>
+      <ion-label style="padding-left: 10px" (click)="home()">Home</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="layers"></ion-icon>
+      <ion-label style="padding-left: 10px" (click)="categories()"
+        >Categories</ion-label
+      >
+    </ion-item>
+    <ion-item>
+      <ion-icon name="document-text"></ion-icon>
+      <ion-label style="padding-left: 10px" (click)="aboutUs()"
+        >About Us</ion-label
+      >
+    </ion-item>
+    <ion-item>
+      <ion-icon name="contrast-outline"></ion-icon>
+      <ion-label style="padding-left: 10px">Dark Theme </ion-label
+      ><ion-toggle
+        slot="end"
+        (ionChange)="toggleTheme($event)"
+        aria-label="Dark toggle"
+        color="dark"
+        [checked]="false"
+      ></ion-toggle
+    ></ion-item>
+  </ion-content>
+
+  <ion-footer>
+    <ion-item>
+      <ion-label>
+        <h2><b>Follow Us</b></h2>
+      </ion-label></ion-item
+    >
+    <div style="display: flex">
+      <div style="margin-left: 10px">
+        <a href="https://www.linkedin.com/in/alok-dake-277289235/"
+          ><ion-icon size="large" name="logo-linkedin"></ion-icon
+        ></a>
+      </div>
+
+      <div style="margin-left: 10px">
+        <a href="https://www.instagram.com/alok__0028/"
+          ><ion-icon size="large" name="logo-instagram"></ion-icon
+        ></a>
+      </div>
+
+      <div style="margin-left: 10px">
+        <a href="https://www.facebook.com/alok.dake.9"
+          ><ion-icon size="large" name="logo-facebook"></ion-icon
+        ></a>
+      </div>
+    </div>
+  </ion-footer>
+</ion-menu>
+
+<ion-toolbar>
+  <div style="display: flex">
+    <ion-menu-button
+      ><img
+        id="main-content"
+        style="border-radius: 100%; margin-left: 10px; margin-top: 10px"
+        src="../assets/img/logo.jpg"
+    /></ion-menu-button>
+
+    <ion-title style="margin-left: -10px; margin-top: 10px"
+      ><b>B-log</b>
+    </ion-title>
+  </div>
+
+  <ion-icon
+    style="margin-right: 10px; margin-top: 10px"
+    routerLink="/search"
+    size="large"
+    slot="end"
+    name="search-outline"
+  ></ion-icon>
+
+  <ion-icon
+    style="margin-right: 10px; margin-top: 10px"
+    (click)="addblog()"
+    size="large"
+    slot="end"
+    name="add-circle-outline"
+  ></ion-icon>
+</ion-toolbar>
+
+<ion-content [fullscreen]="true">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content> </ion-refresher-content>
+  </ion-refresher>
+  <br />
+  <ion-textarea
+    (click)="add()"
+    style="padding-left: 10px; padding-right: 10px"
+    label="What do you want to ask or share?"
+    labelPlacement="floating"
+    fill="outline"
+  ></ion-textarea>
+  <br />
 
   <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <ion-spinner *ngIf="!blogs"></ion-spinner>
+  </div>
+  <div *ngIf="blogs">
+    <ion-card *ngFor="let item of blogs" style="border-radius: 20px">
+      <img src="{{item.blogImage}}" />
+      <ion-card-header>
+        <ion-card-title style="font-size: xx-large"
+          ><b>{{item.title}}</b></ion-card-title
+        >
+        <ion-card-title style="font-size: large"
+          >{{item.blogAuth}}</ion-card-title
+        >
+        <ion-card-title
+          ><b style="font-size: larger">{{item.category}}</b></ion-card-title
+        >
+        <ion-card-title
+          style="
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            cursor: pointer;
+          "
+          >{{item.description}}</ion-card-title
+        >
+      </ion-card-header>
+      <div style="margin-left: 88%">
+        <ion-icon
+          (click)="view(item)"
+          size="large"
+          name="information-circle-outline"
+        ></ion-icon>
+      </div>
+    </ion-card>
   </div>
 </ion-content>

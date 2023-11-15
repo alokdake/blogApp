@@ -1,3 +1,90 @@
 <ion-app>
+  <!-- <ion-menu [type]="typeOfMenu" contentId="main-content">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title style="margin-left: 100px">Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">
+      <ion-item>
+        <ion-label>Hey</ion-label>
+      </ion-item>
+      <br />
+      <br />
+      <ion-item>
+        <ion-icon name="home"></ion-icon>
+        <ion-label style="padding-left: 10px" (click)="home()">Home</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="layers"></ion-icon>
+        <ion-label style="padding-left: 10px" (click)="categories()"
+          >Categories</ion-label
+        >
+      </ion-item>
+      <ion-item>
+        <ion-icon name="document-text"></ion-icon>
+        <ion-label style="padding-left: 10px" (click)="aboutUs()"
+          >About Us</ion-label
+        >
+      </ion-item>
+      <ion-item>
+        <ion-icon name="contrast-outline"></ion-icon>
+        <ion-label style="padding-left: 10px">Dark Theme </ion-label
+        ><ion-toggle
+          slot="end"
+          (ionChange)="toggleTheme($event)"
+          aria-label="Dark toggle"
+          color="dark"
+          [checked]="false"
+        ></ion-toggle
+      ></ion-item>
+
+      <ion-item>
+        <ion-label (click)="login()">Login</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label (click)="register()">Register</ion-label>
+      </ion-item>
+    </ion-content>
+
+    <ion-footer>
+      <ion-item>
+        <ion-label>
+          <h2><b>Follow Us</b></h2>
+        </ion-label></ion-item
+      >
+      <div style="display: flex">
+        <div style="margin-left: 10px">
+          <a href="https://www.linkedin.com/in/alok-dake-277289235/"
+            ><ion-icon size="large" name="logo-linkedin"></ion-icon
+          ></a>
+        </div>
+
+        <div style="margin-left: 10px">
+          <a href="https://www.instagram.com/alok__0028/"
+            ><ion-icon size="large" name="logo-instagram"></ion-icon
+          ></a>
+        </div>
+
+        <div style="margin-left: 10px">
+          <a href="https://www.facebook.com/alok.dake.9"
+            ><ion-icon size="large" name="logo-facebook"></ion-icon
+          ></a>
+        </div>
+      </div>
+    </ion-footer>
+  </ion-menu> -->
+  <div class="ion-page" id="main-content">
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding"> Alok </ion-content>
+  </div>
+
   <ion-router-outlet></ion-router-outlet>
 </ion-app>
